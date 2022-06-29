@@ -25,8 +25,9 @@ public class User {
     private String address;
     private String role;
     private String status;
+    private String avatar;
 
-    public User(String username, String password, String email, String fullname, Date birthday, String phone, String address, String role, String status) {
+    public User( String username, String password, String email, String fullname, Date birthday, String phone, String address, String role, String status, String avatar) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -36,5 +37,6 @@ public class User {
         this.address = address;
         this.role = role;
         this.status = status;
+        this.avatar = avatar;
     }
 }

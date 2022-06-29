@@ -18,17 +18,29 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseObject getAllUsers() {
         List<User> users= userRepo.findAll();
-        return new ResponseObject(200,"Sucesss",users);
+        return new ResponseObject("success","Get all user success",users);
     }
 
     @Override
     public ResponseObject registerNewUser(User newUser) {
         Optional<User> user = userRepo.findByUsername(newUser.getUsername());
         if(user.isPresent()){
-            return new ResponseObject(404,"Username is exist",null);
+            return new ResponseObject("failed","Username is exist",null);
         }else {
             User saveUser = userRepo.save(newUser);
-            return new ResponseObject(201,"Register new user is successfull",saveUser);
+            return new ResponseObject("success","Register new user is successfull",saveUser);
         }
     }
+
+    @Override
+    public ResponseObject deleteUser(long id) {
+        boolean isExist = userRepo.existsById(id);
+        if(isExist) {
+            userRepo.deleteById(id);
+            return new ResponseObject("success","Delete user successfull","");
+        }else{
+            return new ResponseObject("failed","Id is not exist","");
+        }
+    }
+
 }
