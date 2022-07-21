@@ -1,7 +1,11 @@
 package com.nlu.bookonlinebe.databases;
 
+import com.nlu.bookonlinebe.models.Order;
+import com.nlu.bookonlinebe.models.OrderDetail;
 import com.nlu.bookonlinebe.models.Product;
 import com.nlu.bookonlinebe.models.User;
+import com.nlu.bookonlinebe.repositories.OrderDetailRepository;
+import com.nlu.bookonlinebe.repositories.OrderRepository;
 import com.nlu.bookonlinebe.repositories.ProductRepository;
 import com.nlu.bookonlinebe.repositories.UserRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -32,7 +36,7 @@ public class Database {
     }
 
     @Bean
-    public CommandLineRunner initProducts(ProductRepository productRepository) {
+    public CommandLineRunner initProducts(ProductRepository productRepository, OrderDetailRepository orderDetailRepository, OrderRepository orderRepository) {
         return new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {
@@ -43,10 +47,20 @@ public class Database {
                 Product product3 = new Product("Cafe cùng tony", "Paulo Coelho", "NXB Kim Đồng", 1988, "Tiểu thuyết"
                         , 100, 150, "Mở bán", "Đây là một cuốn sách rất hay", 1400, 25000,"http://isach.info/images/story/cover/nha_gia_kim__paulo_coelho.jpg");
 
+                Order order1 = new Order("Huynh Ngoc Tan","Ho Chi Minh","0848107178",new Date("01/02/2022"),"Chưa thanh toán","Đơn hàng mới",30000);
+
+                OrderDetail orderDetail1 = new OrderDetail(order1,product1,3);
+                OrderDetail orderDetail2 = new OrderDetail(order1,product2,1);
+                OrderDetail orderDetail3 = new OrderDetail(order1,product3,5);
+
                 productRepository.save(product1);
                 productRepository.save(product2);
                 productRepository.save(product3);
 
+                orderRepository.save(order1);
+                orderDetailRepository.save(orderDetail1);
+                orderDetailRepository.save(orderDetail2);
+                orderDetailRepository.save(orderDetail3);
             }
         };
     }

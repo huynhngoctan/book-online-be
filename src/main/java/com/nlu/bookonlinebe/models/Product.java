@@ -1,10 +1,12 @@
 package com.nlu.bookonlinebe.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -27,6 +29,9 @@ public class Product {
     private int stock;
     private double price;
     private String linkImage;
+    @OneToMany(mappedBy = "product")
+    @JsonIgnore
+    private List<OrderDetail> orderDetailList;
 
     public Product(String name, String author, String publisher, int publishingYear, String genre, double weight, int numberOfPages, String status, String description, int stock, double price, String linkImage) {
         this.name = name;
