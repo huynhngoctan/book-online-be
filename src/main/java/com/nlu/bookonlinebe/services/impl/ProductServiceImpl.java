@@ -25,7 +25,7 @@ public class ProductServiceImpl implements ProductService {
     public ResponseObject getProduct(long id) {
         Optional<Product> productOptional = productRepo.findById(id);
         if (productOptional.isPresent()) {
-            return new ResponseObject("successfull", "Get product successfull", productOptional.get());
+            return new ResponseObject("success", "Get product successfull", productOptional.get());
         } else return new ResponseObject("failed", "Product does not exist", "");
     }
 

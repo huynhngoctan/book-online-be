@@ -48,19 +48,28 @@ public class Database {
                         , 100, 150, "Mở bán", "Đây là một cuốn sách rất hay", 1400, 25000,"http://isach.info/images/story/cover/nha_gia_kim__paulo_coelho.jpg");
 
                 Order order1 = new Order("Huynh Ngoc Tan","Ho Chi Minh","0848107178",new Date("01/02/2022"),"Chưa thanh toán","Đơn hàng mới",30000);
+                Order order2 = new Order("Vo Do Thi Nhan","Binh Dinh","0722355899",new Date("22/05/2022"),"Chưa thanh toán","Đơn hàng mới",20000);
 
                 OrderDetail orderDetail1 = new OrderDetail(order1,product1,3);
                 OrderDetail orderDetail2 = new OrderDetail(order1,product2,1);
                 OrderDetail orderDetail3 = new OrderDetail(order1,product3,5);
+
+                OrderDetail orderDetail4 = new OrderDetail(order2,product1,1);
+                OrderDetail orderDetail5 = new OrderDetail(order2,product2,2);
+                OrderDetail orderDetail6 = new OrderDetail(order2,product3,3);
 
                 productRepository.save(product1);
                 productRepository.save(product2);
                 productRepository.save(product3);
 
                 orderRepository.save(order1);
+                orderRepository.save(order2);
                 orderDetailRepository.save(orderDetail1);
                 orderDetailRepository.save(orderDetail2);
                 orderDetailRepository.save(orderDetail3);
+                orderDetailRepository.save(orderDetail4);
+                orderDetailRepository.save(orderDetail5);
+                orderDetailRepository.save(orderDetail6);
             }
         };
     }

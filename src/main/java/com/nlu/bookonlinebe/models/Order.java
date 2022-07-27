@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -25,8 +26,10 @@ public class Order {
     private String paymentStatus;
     private String status;
     private double shipPrice;
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderDetail> orderDetailList;
+    @Transient
+    private double totalPriceOrderDetail;
     @Transient
     private double totalPrice;
 
@@ -40,12 +43,20 @@ public class Order {
         this.shipPrice = shipPrice;
     }
 
-    public double getTotalPrice() {
+    public double getTotalPriceOrderDetail(){
         double totalPrice = 0;
         for(OrderDetail orderDetail : orderDetailList){
             totalPrice+=orderDetail.getOrderDetailPrice();
         }
-        totalPrice+=shipPrice;
-        return totalPrice;
+        return totalPrice ;
+    }
+    public double getTotalPrice() {
+
+        return getTotalPriceOrderDetail() + this.shipPrice ;
+    }
+
+    public String getCreatedDate(){
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        return formatter.format(this.createdDate);
     }
 }

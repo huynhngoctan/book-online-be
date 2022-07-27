@@ -21,7 +21,6 @@ public class OrderDetail {
     private Order order;
     @ManyToOne
     @JoinColumn(name = "product_id",referencedColumnName = "id")
-    @JsonIgnore
     private Product product;
     private int quantity;
     @Transient
