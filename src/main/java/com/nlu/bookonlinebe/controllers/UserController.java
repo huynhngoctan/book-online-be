@@ -33,6 +33,12 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<ResponseObject> searchByUsername(@RequestParam("q") String q){
+        ResponseObject result = userService.searchByUsername(q);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+
     @PostMapping
     public ResponseEntity<ResponseObject> registerNewUser(@RequestBody User newUser) {
         ResponseObject result = userService.registerNewUser(newUser);

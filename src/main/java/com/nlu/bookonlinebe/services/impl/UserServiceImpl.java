@@ -83,4 +83,10 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public ResponseObject searchByUsername(String username) {
+        List<User> users = userRepo.findByUsernameContainingIgnoreCase(username);
+        return new ResponseObject("success", "Search completed",users);
+    }
+
 }

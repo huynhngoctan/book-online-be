@@ -31,6 +31,11 @@ public class ProductController {
         ResponseObject result = productService.findProductname(name);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
+    @GetMapping("/search")
+    public ResponseEntity<ResponseObject> searchByNameOrAuthor(@RequestParam("q") String q){
+        ResponseObject result = productService.searchByNameOrAuthor(q);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
 
     @PostMapping()
     public ResponseEntity<ResponseObject> createProduct(@RequestBody Product product){

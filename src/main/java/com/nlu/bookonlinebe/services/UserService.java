@@ -10,4 +10,5 @@ public interface UserService {
     public ResponseObject updateUser(long id, User newUser);
     public ResponseObject deleteUser(long id);
     public ResponseObject findUsername(String username);
+    public ResponseObject searchByUsername(String username);
 }

@@ -76,4 +76,10 @@ public class ProductServiceImpl implements ProductService {
             return new ResponseObject("failed", "Product's name does not exist", "");
     }
 
+    @Override
+    public ResponseObject searchByNameOrAuthor(String q) {
+        List<Product> products = productRepo.findByKeywordsContainingIgnoreCase(q);
+        return new ResponseObject("success","Search completed",products);
+    }
+
 }

@@ -10,4 +10,5 @@ public interface ProductService {
     public ResponseObject updateProduct(long id, Product newProduct);
     public ResponseObject deleteProduct(long id);
     public ResponseObject findProductname(String productname);
+    public ResponseObject searchByNameOrAuthor(String q);
 }
