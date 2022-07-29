@@ -41,4 +41,10 @@ public class OrderController {
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
+    @PostMapping()
+    public ResponseEntity<ResponseObject> createOrder(@RequestBody Order order){
+        ResponseObject result = orderService.createOrder(order);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+
 }

@@ -80,4 +80,10 @@ public class OrderServiceImpl implements OrderService {
         }
 
     }
+
+    @Override
+    public ResponseObject createOrder(Order oder) {
+        orderRepo.save(oder);
+        return new ResponseObject("success", "Get all order successfull", oder);
+    }
 }
