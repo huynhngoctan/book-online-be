@@ -8,5 +8,5 @@ public interface OrderService {
     public ResponseObject getOrder(long id);
     public ResponseObject updateOrder(long id, Order newOrder);
     public ResponseObject deleteOrder(long id);
-    public ResponseObject createOrder(Order oder);
+    public ResponseObject createOrder(Order order);
 }
