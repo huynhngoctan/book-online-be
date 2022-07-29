@@ -82,8 +82,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public ResponseObject createOrder(Order oder) {
-        orderRepo.save(oder);
-        return new ResponseObject("success", "Get all order successfull", oder);
+    public ResponseObject createOrder(Order order) {
+        Order newOrder = orderRepo.save(order);
+        return new ResponseObject("success", "Get all order successfull", newOrder);
     }
 }

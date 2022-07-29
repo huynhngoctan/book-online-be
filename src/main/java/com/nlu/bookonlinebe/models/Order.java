@@ -50,15 +50,19 @@ public class Order {
     }
 
     public double getTotalPriceOrderDetail(){
-        double totalPrice = 0;
-        for(OrderDetail orderDetail : orderDetailList){
-            totalPrice+=orderDetail.getOrderDetailPrice();
+        if(orderDetailList!=null) {
+            double totalPrice = 0;
+            for (OrderDetail orderDetail : orderDetailList) {
+                totalPrice += orderDetail.getOrderDetailPrice();
+            }
+            return totalPrice;
         }
-        return totalPrice ;
+        else return 0;
     }
     public double getTotalPrice() {
-
+        if(orderDetailList!=null)
         return getTotalPriceOrderDetail() + this.shipPrice ;
+        else return 0;
     }
 
     public String getCreatedDate(){
