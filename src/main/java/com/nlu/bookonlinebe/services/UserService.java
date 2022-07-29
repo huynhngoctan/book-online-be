@@ -11,4 +11,5 @@ public interface UserService {
     public ResponseObject deleteUser(long id);
     public ResponseObject findUsername(String username);
     public ResponseObject searchByUsername(String username);
+    public ResponseObject checkIfExisted(String email, String password);
 }

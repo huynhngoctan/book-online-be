@@ -89,4 +89,15 @@ public class UserServiceImpl implements UserService {
         return new ResponseObject("success", "Search completed",users);
     }
 
+    @Override
+    public ResponseObject checkIfExisted(String email, String password) {
+        User user = userRepo.findUserByEmailAndPassword(email, password);
+        if (user == null){
+            return new ResponseObject("success", "Search completed", "false");
+        }
+        else {
+            return new ResponseObject("success", "Search completed", "true");
+        }
+    }
+
 }
