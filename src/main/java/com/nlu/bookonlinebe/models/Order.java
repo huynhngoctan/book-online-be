@@ -43,6 +43,12 @@ public class Order {
         this.shipPrice = shipPrice;
     }
 
+    public Order(String customer, String adress, String phone){
+        this.customer = customer;
+        this.address = adress;
+        this.phone = phone;
+    }
+
     public double getTotalPriceOrderDetail(){
         double totalPrice = 0;
         for(OrderDetail orderDetail : orderDetailList){

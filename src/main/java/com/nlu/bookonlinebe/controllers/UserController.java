@@ -60,4 +60,10 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
+    @GetMapping("/login")
+    public ResponseEntity<ResponseObject> checkIfExisted(@RequestParam String email, @RequestParam String password){
+        ResponseObject result = userService.checkIfExisted(email, password);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+
 }
