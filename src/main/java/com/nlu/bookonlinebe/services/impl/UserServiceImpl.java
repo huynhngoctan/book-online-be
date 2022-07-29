@@ -96,7 +96,7 @@ public class UserServiceImpl implements UserService {
             return new ResponseObject("success", "Search completed", "false");
         }
         else {
-            return new ResponseObject("success", "Search completed", "true");
+            return new ResponseObject("success", "Search completed", user);
         }
     }
 
