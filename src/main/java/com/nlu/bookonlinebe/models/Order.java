@@ -33,7 +33,8 @@ public class Order {
     @Transient
     private double totalPrice;
 
-    public Order(String customer, String address, String phone, Date createdDate, String paymentStatus, String status, double shipPrice) {
+    public Order(String customer, String address, String phone, Date createdDate, String paymentStatus,
+                 String status, double shipPrice) {
         this.customer = customer;
         this.address = address;
         this.phone = phone;
@@ -43,10 +44,16 @@ public class Order {
         this.shipPrice = shipPrice;
     }
 
-    public Order(String customer, String adress, String phone){
+    public Order(String customer, String adress, String phone, Date createdDate, String paymentStatus,
+                 String status, double shipPrice, List<OrderDetail> orderDetailList){
         this.customer = customer;
-        this.address = adress;
+        this.address = address;
         this.phone = phone;
+        this.createdDate = createdDate;
+        this.paymentStatus = paymentStatus;
+        this.status = status;
+        this.shipPrice = shipPrice;
+        this.orderDetailList = orderDetailList;
     }
 
     public double getTotalPriceOrderDetail(){
@@ -66,7 +73,13 @@ public class Order {
     }
 
     public String getCreatedDate(){
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        return formatter.format(this.createdDate);
+        if(this.createdDate != null) {
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            return formatter.format(this.createdDate);
+        }
+        else {
+            return "";
+        }
+
     }
 }

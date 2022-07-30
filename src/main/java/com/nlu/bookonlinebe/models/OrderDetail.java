@@ -32,7 +32,30 @@ public class OrderDetail {
         this.quantity = quantity;
     }
 
+    public OrderDetail(Product product, int quantity){
+        this.product = product;
+        this.quantity = quantity;
+    }
+
     public double getOrderDetailPrice(){
         return  product.getPrice() * quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderDetail{" +
+                "id=" + id +
+                ", order=" + order +
+                ", product=" + product +
+                ", quantity=" + quantity +
+                '}';
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }
