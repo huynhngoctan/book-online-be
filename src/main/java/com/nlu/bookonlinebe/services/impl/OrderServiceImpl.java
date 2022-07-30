@@ -4,6 +4,7 @@ import com.nlu.bookonlinebe.models.Order;
 import com.nlu.bookonlinebe.models.OrderDetail;
 import com.nlu.bookonlinebe.models.Product;
 import com.nlu.bookonlinebe.models.ResponseObject;
+import com.nlu.bookonlinebe.repositories.OrderDetailRepository;
 import com.nlu.bookonlinebe.repositories.OrderRepository;
 import com.nlu.bookonlinebe.repositories.ProductRepository;
 import com.nlu.bookonlinebe.services.OrderService;
@@ -19,6 +20,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     OrderRepository orderRepo;
+    @Autowired
+    OrderDetailRepository orderDetailRepo;
     @Autowired
     ProductRepository productRepo;
 
@@ -86,6 +89,10 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     public ResponseObject createOrder(Order order) {
         Order newOrder = orderRepo.save(order);
+
+
         return new ResponseObject("success", "Get all order successfull", newOrder);
     }
+
+
 }
