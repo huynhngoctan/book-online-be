@@ -66,4 +66,10 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
+    @GetMapping("/checkEmail")
+    public ResponseEntity<ResponseObject> checkEmail(@RequestParam String email){
+        ResponseObject result = userService.checkEmail(email);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+
 }
