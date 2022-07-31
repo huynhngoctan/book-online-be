@@ -65,6 +65,13 @@ public class UserController {
         ResponseObject result = userService.checkIfExisted(email, password);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
+
+    @GetMapping("/checkEmail")
+    public ResponseEntity<ResponseObject> checkEmail(@RequestParam String email){
+        ResponseObject result = userService.checkEmail(email);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+
     @GetMapping("/loginAdmin")
     public ResponseEntity<ResponseObject> loginAdmin(@RequestParam String username, @RequestParam String password){
         ResponseObject result = userService.loginAdmin(username, password);
