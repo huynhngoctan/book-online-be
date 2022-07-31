@@ -96,7 +96,19 @@ public class UserServiceImpl implements UserService {
             return new ResponseObject("success", "Search completed", "false");
         }
         else {
+            user.setPassword(null);
             return new ResponseObject("success", "Search completed", user);
+        }
+    }
+
+    @Override
+    public ResponseObject checkEmail(String email) {
+        User user = userRepo.findUserByEmail(email);
+        if (user != null){
+            return new ResponseObject("success", "Search completed", "true");
+        }
+        else {
+            return new ResponseObject("success", "Search completed", "false");
         }
     }
 
