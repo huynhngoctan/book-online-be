@@ -24,10 +24,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseObject getUser(long id) {
         Optional<User> user = userRepo.findById(id);
-        if(user.isPresent()){
+        if (user.isPresent()) {
             return new ResponseObject("success", "Get user successfull", user);
-        } else{
-            return new ResponseObject("failed", "User does not exist","");
+        } else {
+            return new ResponseObject("failed", "User does not exist", "");
         }
     }
 
@@ -76,9 +76,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseObject findUsername(String username) {
         Optional<User> user = userRepo.findByUsername(username);
-        if(user.isPresent()){
+        if (user.isPresent()) {
             return new ResponseObject("success", "Username is exist", "");
-        }else{
+        } else {
             return new ResponseObject("failed", "Username is not exist", "");
         }
     }
@@ -86,17 +86,32 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseObject searchByUsername(String username) {
         List<User> users = userRepo.findByUsernameContainingIgnoreCase(username);
-        return new ResponseObject("success", "Search completed",users);
+        return new ResponseObject("success", "Search completed", users);
     }
 
     @Override
     public ResponseObject checkIfExisted(String email, String password) {
         User user = userRepo.findUserByEmailAndPassword(email, password);
-        if (user == null){
+        if (user == null) {
             return new ResponseObject("success", "Search completed", "false");
-        }
-        else {
+        } else {
             return new ResponseObject("success", "Search completed", user);
+        }
+    }
+
+    @Override
+    public ResponseObject loginAdmin(String username, String password) {
+        Optional<User> userOptional = userRepo.findByUsernameAndPassword(username, password);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            if (!user.getRole().equals("admin"))
+                return new ResponseObject("failed", "Role", "");
+            if (!user.getStatus().equals("Kích hoạt"))
+                return new ResponseObject("failed", "Status", "");
+            return new ResponseObject("success", "Login successfull", user);
+
+        } else {
+            return new ResponseObject("failed", "Wrong", "");
         }
     }
 
