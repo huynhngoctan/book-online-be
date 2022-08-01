@@ -14,4 +14,5 @@ public interface UserService {
     public ResponseObject checkIfExisted(String email, String password);
     public ResponseObject checkEmail(String email);
     public ResponseObject loginAdmin(String username,String password);
+    public ResponseObject findUserByEmail(String email);
 }

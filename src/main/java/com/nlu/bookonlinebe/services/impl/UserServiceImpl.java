@@ -132,4 +132,15 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public ResponseObject findUserByEmail(String email) {
+        User user = userRepo.findUserByEmail(email);
+        if(user != null){
+            return new ResponseObject("success", "Search completed", user);
+        }
+        else {
+            return new ResponseObject("success", "Search completed", "User not existed");
+        }
+    }
+
 }
