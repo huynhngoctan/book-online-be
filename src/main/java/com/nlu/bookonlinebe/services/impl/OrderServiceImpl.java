@@ -91,9 +91,13 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     public ResponseObject createOrder(Order order) {
         Order newOrder = orderRepo.save(order);
+        return new ResponseObject("success", "Create order successfull", newOrder);
+    }
 
-
-        return new ResponseObject("success", "Get all order successfull", newOrder);
+    @Override
+    public ResponseObject getLastOrder() {
+        Order order = orderRepo.findFirstByOrderByIdDesc();
+        return new ResponseObject("success", "get order successfull", order);
     }
 
 
