@@ -7,6 +7,7 @@ import com.nlu.bookonlinebe.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,14 +25,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseObject getUser(long id) {
         Optional<User> user = userRepo.findById(id);
-        if(user.isPresent()){
+        if (user.isPresent()) {
             return new ResponseObject("success", "Get user successfull", user);
-        } else{
-            return new ResponseObject("failed", "User does not exist","");
+        } else {
+            return new ResponseObject("failed", "User does not exist", "");
         }
     }
 
     @Override
+    @Transactional
     public ResponseObject registerNewUser(User newUser) {
         Optional<User> user = userRepo.findByUsername(newUser.getUsername());
         if (user.isPresent()) {
@@ -43,6 +45,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public ResponseObject updateUser(long id, User newUser) {
         Optional<User> userOptional = userRepo.findById(id);
         if (!userOptional.isPresent()) return new ResponseObject("failed", "User does not exist", null);
@@ -63,6 +66,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
+    @Transactional
     public ResponseObject deleteUser(long id) {
         boolean isExist = userRepo.existsById(id);
         if (isExist) {
@@ -76,9 +80,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseObject findUsername(String username) {
         Optional<User> user = userRepo.findByUsername(username);
-        if(user.isPresent()){
+        if (user.isPresent()) {
             return new ResponseObject("success", "Username is exist", "");
-        }else{
+        } else {
             return new ResponseObject("failed", "Username is not exist", "");
         }
     }
@@ -86,13 +90,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseObject searchByUsername(String username) {
         List<User> users = userRepo.findByUsernameContainingIgnoreCase(username);
-        return new ResponseObject("success", "Search completed",users);
+        return new ResponseObject("success", "Search completed", users);
     }
 
     @Override
     public ResponseObject checkIfExisted(String email, String password) {
         User user = userRepo.findUserByEmailAndPassword(email, password);
-        if (user == null){
+        if (user == null) {
             return new ResponseObject("success", "Search completed", "false");
         }
         else {
@@ -109,6 +113,22 @@ public class UserServiceImpl implements UserService {
         }
         else {
             return new ResponseObject("success", "Search completed", "false");
+        }
+    }
+
+    @Override
+    public ResponseObject loginAdmin(String username, String password) {
+        Optional<User> userOptional = userRepo.findByUsernameAndPassword(username, password);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            if (!user.getRole().equals("admin"))
+                return new ResponseObject("failed", "Role", "");
+            if (!user.getStatus().equals("Kích hoạt"))
+                return new ResponseObject("failed", "Status", "");
+            return new ResponseObject("success", "Login successfull", user);
+
+        } else {
+            return new ResponseObject("failed", "Wrong", "");
         }
     }
 
