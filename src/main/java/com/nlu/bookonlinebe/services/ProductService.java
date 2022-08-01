@@ -11,4 +11,6 @@ public interface ProductService {
     public ResponseObject deleteProduct(long id);
     public ResponseObject findProductname(String productname);
     public ResponseObject searchByNameOrAuthor(String q);
+    public ResponseObject findTop10ByName();
+    public ResponseObject findTop10New();
 }

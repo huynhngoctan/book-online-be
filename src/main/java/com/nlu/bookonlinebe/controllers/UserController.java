@@ -105,4 +105,12 @@ MailSenderP mailSender ;
             return ResponseEntity.status(HttpStatus.OK).body(new ResponseObject("oke","false",""));
         }
     }
+
+    @PostMapping("/newPassword")
+    public ResponseEntity<ResponseObject> setNewPassword(@RequestParam String password, @RequestParam String email){
+        User user = (User) userService.findUserByEmail(email).getData();
+        user.setPassword(password);
+        userService.updateUser(user.getId(), user);
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseObject("oke","true",""));
+    }
 }
