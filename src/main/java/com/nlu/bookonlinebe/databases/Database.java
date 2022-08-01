@@ -40,37 +40,59 @@ public class Database {
 //        return new CommandLineRunner() {
 //            @Override
 //            public void run(String... args) throws Exception {
-//                Product product1 = new Product("Nhà giả kim", "Paulo Coelho", "NXB Hội Nhà Văn", 2020, "Văn học"
-//                        , 220, 227, "Mở bán", "Tiểu thuyết Nhà giả kim của Paulo Coelho như một câu chuyện cổ tích giản dị, nhân ái, giàu chất thơ, thấm đẫm những minh triết huyền bí của phương Đông.",
-//                        200, 63000,"http://localhost:8080/api/v1/FileUpload/files/40db84c9e8e54ef6ace4cfc7bfbfedf0.jpg");
-//                Product product2 = new Product("Không gia đình", "Hector Malot", "NXB Kim Đồng", 2018, "Văn học"
-//                        , 500, 464, "Mở bán", "KHÔNG GIA ĐÌNH kể chuyện về cuộc đời của cậu bé Rémi. Từ nhỏ, Rémi đã bị bắt cóc, rồi bị bố nuôi bán cho một đoàn xiếc thú. Em đã theo đoàn xiếc ấy đi lưu lạc khắp nước Pháp.", 200, 139000,"http://localhost:8080/api/v1/FileUpload/files/31f50fd04a924a4b831fd85be1e5a6d6.jpg");
-//                Product product3 = new Product("Ông già và biển cả", "Ernest Hemingway", "NXB Văn Học", 2018, "Văn học"
-//                        , 150, 124, "Mở bán", "Trong tác phẩm này, ông đã triệt để dùng nguyên lý mà ông gọi là “tảng băng trôi”, chỉ mô tả một phần nổi còn lại bảy phần chìm, khi mô tả sức mạnh của con cá, sự chênh lệch về lực lượng, về cuộc chiến đấu không cân sức giữa con cá hung dữ với ông già.", 300, 36000,"http://localhost:8080/api/v1/FileUpload/files/b3ae5510d7fe41a2864ac84f4709398b.jpg");
+////                Product product1 = new Product("Nghĩ Giàu & Làm Giàu", "Napoleon Hill", "NXB Tổng Hợp TPHCM", 2020, "Kinh tế"
+////                        , 450, 400, "Mở bán",
+////                        "Là một trong những cuốn sách bán chạy nhất mọi thời đại. Đã hơn 60 triệu bản được phát hành với gần trăm ngôn ngữ trên toàn thế giới",
+////                        280, 74000,"http://localhost:8080/api/v1/FileUpload/files/280cd37c8bbe4e41aa8e7a2bb177d47f.png");
+////
+////                Product product2 = new Product("Bí Mật Tư Duy Triệu Phú", "Harv Eker", "NXB Tổng Hợp TPHCM", 2021, "Kinh tế"
+////                        , 300, 287, "Mở bán",
+////                        "Tiết lộ những bí mật tại sao một số người lại đạt được những thành công vượt bậc, được số phận ban cho cuộc sống sung túc, giàu có.",
+////                        160, 70000,"http://localhost:8080/api/v1/FileUpload/files/0e32f540dce043c5ad023e0bcb8d1581.png");
+////
+////                Product product3 = new Product("Người Giàu Có Nhất Thành Babylon", "George S Clason", "NXB Tổng Hợp TPHCM", 2020, "Kinh tế"
+////                        , 265, 214, "Mở bán",
+////                        "Quyển sách này sẽ giúp bạn biết cách vận dụng những nguyên lý quan trọng để phát triển tài chính",
+////                        340, 66000,"http://localhost:8080/api/v1/FileUpload/files/378055e756b64802873d6d569aef0a0e.png");
+////
+////                Product product4 = new Product("Đường Đến Thành Công", "Napoleon Hill", "NXB Tổng Hợp TPHCM", 2021, "Kinh tế"
+////                        , 300, 280, "Mở bán",
+////                        "15 biển báo từ Napoleon Hill giúp bạn không bị lạc đường trên hành trình tìm kiếm sự thành công trong cuộc sống",
+////                        250, 93000,"http://localhost:8080/api/v1/FileUpload/files/8afc0621f7c04a6ebe344e9970e5dd78.png");
+////
+////                Product product5 = new Product("Công Thức Tự Tin", "Napoleon Hill", "NXB Dân Trí", 2022, "Kinh tế"
+////                        , 100, 104, "Mở bán",
+////                        "Công thức tự tin giúp bạn tăng cường sự tự tin của mình thông qua việc áp dụng các chiến lược của Hill để kiểm soát suy nghĩ của bạn",
+////                        250, 39000,"http://localhost:8080/api/v1/FileUpload/files/fc066ec7d5b44a75a1e038096594e769.png");
 //
-//                Order order1 = new Order("Huynh Ngoc Tan","Ho Chi Minh","0848107178",new Date("01/02/2022"),"Chưa thanh toán","Đơn hàng mới",30000);
-//                Order order2 = new Order("Vo Do Thi Nhan","Binh Dinh","0722355899",new Date("22/05/2022"),"Chưa thanh toán","Đơn hàng mới",20000);
 //
-//                OrderDetail orderDetail1 = new OrderDetail(order1,product1,3);
-//                OrderDetail orderDetail2 = new OrderDetail(order1,product2,1);
-//                OrderDetail orderDetail3 = new OrderDetail(order1,product3,5);
 //
-//                OrderDetail orderDetail4 = new OrderDetail(order2,product1,1);
-//                OrderDetail orderDetail5 = new OrderDetail(order2,product2,2);
-//                OrderDetail orderDetail6 = new OrderDetail(order2,product3,3);
+////                Order order1 = new Order("Huynh Ngoc Tan","Ho Chi Minh","0848107178",new Date("01/02/2022"),"Chưa thanh toán","Đơn hàng mới",30000);
+////                Order order2 = new Order("Vo Do Thi Nhan","Binh Dinh","0722355899",new Date("22/05/2022"),"Chưa thanh toán","Đơn hàng mới",20000);
+////
+////                OrderDetail orderDetail1 = new OrderDetail(order1,product1,3);
+////                OrderDetail orderDetail2 = new OrderDetail(order1,product2,1);
+////                OrderDetail orderDetail3 = new OrderDetail(order1,product3,5);
+////
+////                OrderDetail orderDetail4 = new OrderDetail(order2,product1,1);
+////                OrderDetail orderDetail5 = new OrderDetail(order2,product2,2);
+////                OrderDetail orderDetail6 = new OrderDetail(order2,product3,3);
 //
-//                productRepository.save(product1);
-//                productRepository.save(product2);
-//                productRepository.save(product3);
+////                productRepository.save(product1);
+////                productRepository.save(product2);
+////                productRepository.save(product3);
+////                productRepository.save(product4);
+////                productRepository.save(product5);
+////                productRepository.save(product3);
 //
-//                orderRepository.save(order1);
-//                orderRepository.save(order2);
-//                orderDetailRepository.save(orderDetail1);
-//                orderDetailRepository.save(orderDetail2);
-//                orderDetailRepository.save(orderDetail3);
-//                orderDetailRepository.save(orderDetail4);
-//                orderDetailRepository.save(orderDetail5);
-//                orderDetailRepository.save(orderDetail6);
+////                orderRepository.save(order1);
+////                orderRepository.save(order2);
+////                orderDetailRepository.save(orderDetail1);
+////                orderDetailRepository.save(orderDetail2);
+////                orderDetailRepository.save(orderDetail3);
+////                orderDetailRepository.save(orderDetail4);
+////                orderDetailRepository.save(orderDetail5);
+////                orderDetailRepository.save(orderDetail6);
 //            }
 //        };
 //    }
