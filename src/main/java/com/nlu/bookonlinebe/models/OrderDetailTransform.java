@@ -12,7 +12,6 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
 public class OrderDetailTransform {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
