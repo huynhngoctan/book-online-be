@@ -47,4 +47,10 @@ public class OrderController {
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
+    @GetMapping("/getLast")
+    public ResponseEntity<ResponseObject> getLastOrder(){
+        ResponseObject result = orderService.getLastOrder();
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+
 }
