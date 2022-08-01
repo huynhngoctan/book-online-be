@@ -7,6 +7,7 @@ import com.nlu.bookonlinebe.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +33,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public ResponseObject registerNewUser(User newUser) {
         Optional<User> user = userRepo.findByUsername(newUser.getUsername());
         if (user.isPresent()) {
@@ -43,6 +45,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public ResponseObject updateUser(long id, User newUser) {
         Optional<User> userOptional = userRepo.findById(id);
         if (!userOptional.isPresent()) return new ResponseObject("failed", "User does not exist", null);
@@ -63,6 +66,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
+    @Transactional
     public ResponseObject deleteUser(long id) {
         boolean isExist = userRepo.existsById(id);
         if (isExist) {

@@ -7,6 +7,7 @@ import com.nlu.bookonlinebe.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +31,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public ResponseObject createProduct(Product product) {
         Optional<Product> productOptional = productRepo.findByName(product.getName());
         if (productOptional.isPresent()) {
@@ -41,6 +43,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public ResponseObject updateProduct(long id, Product newProduct) {
         Optional<Product> productOptional = productRepo.findById(id);
         if(!productOptional.isPresent()) return new ResponseObject("failed","Product does not exist",null);
@@ -59,6 +62,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public ResponseObject deleteProduct(long id) {
         boolean isExist = productRepo.existsById(id);
         if(isExist){

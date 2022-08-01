@@ -41,6 +41,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @Transactional
     public ResponseObject updateOrder(long id, Order newOrder) {
         Optional<Order> orderOptional = orderRepo.findById(id);
 
@@ -74,6 +75,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @Transactional
     public ResponseObject deleteOrder(long id) {
         boolean isExist = orderRepo.existsById(id);
         if (isExist) {
