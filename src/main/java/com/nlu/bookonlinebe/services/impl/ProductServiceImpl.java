@@ -86,4 +86,16 @@ public class ProductServiceImpl implements ProductService {
         return new ResponseObject("success","Search completed",products);
     }
 
+    @Override
+    public ResponseObject findTop10ByName() {
+        List<Product> products = productRepo.findTop10ByOrderByNameAsc();
+        return new ResponseObject("success","Get completed",products);
+    }
+
+    @Override
+    public ResponseObject findTop10New() {
+        List<Product> products = productRepo.findTop10ByOrderByPublishingYearAsc();
+        return new ResponseObject("success","Get completed",products);
+    }
+
 }

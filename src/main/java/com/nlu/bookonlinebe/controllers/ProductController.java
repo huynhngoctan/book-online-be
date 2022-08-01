@@ -57,4 +57,16 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
+    @GetMapping("/top")
+    public ResponseEntity<ResponseObject> getTop(){
+        ResponseObject result = productService.findTop10ByName();
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+
+    @GetMapping("/news")
+    public ResponseEntity<ResponseObject> getNews(){
+        ResponseObject result = productService.findTop10New();
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+
 }
