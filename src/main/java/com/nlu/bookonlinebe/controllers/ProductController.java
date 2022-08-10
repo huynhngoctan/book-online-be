@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/products")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "**")
 public class ProductController {
     @Autowired
     ProductService productService;
@@ -54,6 +54,18 @@ public class ProductController {
     @DeleteMapping("/{id}")
     public ResponseEntity<ResponseObject> deleteProduct(@PathVariable("id") long id){
         ResponseObject result = productService.deleteProduct(id);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+
+    @GetMapping("/top")
+    public ResponseEntity<ResponseObject> getTop(){
+        ResponseObject result = productService.findTop10ByName();
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+
+    @GetMapping("/news")
+    public ResponseEntity<ResponseObject> getNews(){
+        ResponseObject result = productService.findTop10New();
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 

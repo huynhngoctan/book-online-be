@@ -3,6 +3,8 @@ package com.nlu.bookonlinebe.controllers;
 import com.nlu.bookonlinebe.models.ResponseObject;
 import com.nlu.bookonlinebe.models.User;
 import com.nlu.bookonlinebe.services.UserService;
+import com.nlu.bookonlinebe.utilities.MailSenderP;
+import com.nlu.bookonlinebe.utilities.RenderOTP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,11 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     @Autowired
     UserService userService;
+    @Autowired
+    RenderOTP otp;
+
+@Autowired
+MailSenderP mailSender ;
 //hello
     @GetMapping
     public ResponseEntity<ResponseObject> getAllUsers() {

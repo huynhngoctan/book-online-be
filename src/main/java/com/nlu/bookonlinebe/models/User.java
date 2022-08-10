@@ -26,6 +26,7 @@ public class User {
     private String role;
     private String status;
     private String avatar;
+    private String recoveryCode;
 
     public User( String username, String password, String email, String fullname, Date birthday, String phone, String address, String role, String status, String avatar) {
         this.username = username;
